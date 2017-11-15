@@ -94,7 +94,7 @@ def search_genius_url(artist, song):
 
 	return best_match
 
-def fetch_lyrics(path):
+def scrape_lyrics(path):
 	if path.startswith('local:'):
 		path = path[6:]
 		with open(path, 'r') as f:
@@ -107,7 +107,7 @@ def fetch_lyrics(path):
 		lyrics = lyrics_info_regex.sub('', lyrics)
 	return multi_space_regex.sub(' ', lyrics)
 
-def scrape_lyrics(charts_df):
+def scrape_all_songs(charts_df):
 	lyrics_list = []
 	for entry in get_top(charts_df, limit=50):
 		artist, song = entry['artist'], entry['song']
@@ -131,5 +131,5 @@ def scrape_lyrics(charts_df):
 df_90s = pd.read_csv('90s-charts.csv')
 df_10s = pd.read_csv('10s-charts.csv')
 
-lyrics = scrape_lyrics(df_10s)
+lyrics = scrape_all_songs(df_10s)
 pd.DataFrame(lyrics).to_csv('10s-lyrics.csv')
