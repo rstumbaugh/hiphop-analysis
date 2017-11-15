@@ -110,7 +110,7 @@ def scrape_lyrics(path):
 def scrape_all_songs(charts_df):
 	lyrics_list = []
 	for entry in get_top(charts_df, limit=50):
-		artist, song = entry['artist'], entry['song']
+		artist, song, weeks = entry['artist'], entry['song'], entry['weeks']
 		if '{} - {}'.format(artist, song) in fetched_urls:
 			match = {'path': fetched_urls['{} - {}'.format(artist, song)]}
 		else:
@@ -118,10 +118,11 @@ def scrape_all_songs(charts_df):
 		if match is None:
 			print('No match found: {} - {}'.format(artist, song))
 			continue
-		lyrics = fetch_lyrics(match['path'])
+		lyrics = scrape_lyrics(match['path'])
 		lyrics_list.append({
 			'artist': artist,
 			'song': song,
+			'weeks': weeks,
 			'lyrics': lyrics
 		})
 		print('Added {} - {}'.format(artist, song))
@@ -131,5 +132,5 @@ def scrape_all_songs(charts_df):
 df_90s = pd.read_csv('90s-charts.csv')
 df_10s = pd.read_csv('10s-charts.csv')
 
-lyrics = scrape_all_songs(df_10s)
-pd.DataFrame(lyrics).to_csv('10s-lyrics.csv')
+lyrics = scrape_all_songs(df_90s)
+pd.DataFrame(lyrics).to_csv('90s-lyrics.csv')
