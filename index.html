@@ -22,6 +22,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  background-color: #f5f5f5 !important;
   margin: 0;
 }
 article,
@@ -10439,8 +10440,6 @@ div#notebook {
     padding: 15px;
     background-color: #fff;
     min-height: 0;
-    -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
-    box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
 @media print {
@@ -11740,11 +11739,35 @@ div#notebook {
     page-break-inside: avoid; 
   }
 }
+
+#notebook-container {
+  width: 80%;
+}
+
+.text_cell h1.primary-header {
+  text-align: center;
+  font-size: 2.4em;
+  margin: 40px auto;
+}
+
+.text_cell p {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.text_cell h1,
+.text_cell h2 {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
-
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
@@ -11775,7 +11798,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-Golden-Age-of-Rap:-An-Analysis">The Golden Age of Rap: An Analysis<a class="anchor-link" href="#The-Golden-Age-of-Rap:-An-Analysis">&#182;</a></h1>
+<h1 class="primary-header" id="The-Golden-Age-of-Rap:-An-Analysis">The Golden Age of Rap: An Analysis<a class="anchor-link" href="#The-Golden-Age-of-Rap:-An-Analysis">&#182;</a></h1>
 </div>
 </div>
 </div>
